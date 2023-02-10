@@ -26,7 +26,7 @@
   "#RNAseq.gitc_docker_override": "String? (optional)",
   
   "##_COMMENT5": "PATHS",
-  "#RNAseq.gatk_path_override": "/gatk/gatk",
+  "#RNAseq.gatk_path_override": "/hpc/group/ryserlab/gatk-4.3.0.0/gatk",
 
   "##_COMMENT6": "PREEMPTIBLES",
   "##RNAseq.preemptible_tries": "(optional) Int?",
