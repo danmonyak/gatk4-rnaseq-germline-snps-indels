@@ -30,12 +30,12 @@
 	File refFastaIndex
 	File refDict
 
-	String? gatk4_docker_override
-	String gatk4_docker = select_first([gatk4_docker_override, "broadinstitute/gatk:latest"])
+	#String? gatk4_docker_override
+	#String gatk4_#docker = select_first([gatk4_docker_override, "broadinstitute/gatk:latest"])
 	String? gatk_path_override
 	String gatk_path = select_first([gatk_path_override, "/gatk/gatk"])
-	String? star_docker_override
-	String star_docker = select_first([star_docker_override, "quay.io/humancellatlas/secondary-analysis-star:v0.2.2-2.5.3a-40ead6e"])
+	#String? star_docker_override
+	#String star_docker = select_first([star_docker_override, "quay.io/humancellatlas/secondary-analysis-star:v0.2.2-2.5.3a-40ead6e"])
 
 	Array[File] knownVcfs
 	Array[File] knownVcfsIndices
@@ -63,7 +63,7 @@
 	        ref_dict = refDict,
 	        preemptible_count = preemptible_count,
 	        gatk_path = gatk_path,
-	        docker = gatk4_docker
+	        #docker = gatk4_docker
 	}
 
 	call RevertSam {
@@ -72,7 +72,7 @@
 			base_name = sampleName + ".reverted",
 			sort_order = "queryname",
 			preemptible_count = preemptible_count,
-			docker = gatk4_docker,
+			#docker = gatk4_docker,
 			gatk_path = gatk_path
 	}
 
@@ -81,7 +81,7 @@
 			unmapped_bam = RevertSam.output_bam,
 			base_name = sampleName,
 			preemptible_count = preemptible_count,
-			docker = gatk4_docker,
+			#docker = gatk4_docker,
 			gatk_path = gatk_path
 	}
 
@@ -94,7 +94,7 @@
 				annotations_gtf = annotationsGTF,
 				read_length = readLength,
 				preemptible_count = preemptible_count,
-				docker = star_docker
+				#docker = star_docker
 		}
 	}
 
@@ -108,7 +108,7 @@
 			base_name = sampleName + ".star",
 			read_length = readLength,
 			preemptible_count = preemptible_count,
-			docker = star_docker
+			#docker = star_docker
 	}
 
 	call MergeBamAlignment {
@@ -119,7 +119,7 @@
 			ref_fasta = refFasta,
 			ref_dict = refDict,
 			preemptible_count = preemptible_count,
-			docker = gatk4_docker,
+			#docker = gatk4_docker,
 			gatk_path = gatk_path
 	}
 
@@ -128,7 +128,7 @@
 			input_bam = MergeBamAlignment.output_bam,
 			base_name = sampleName + ".dedupped",
 			preemptible_count = preemptible_count,
-			docker = gatk4_docker,
+			#docker = gatk4_docker,
 			gatk_path = gatk_path
 	}
 
@@ -142,7 +142,7 @@
             ref_fasta_index = refFastaIndex,
             ref_dict = refDict,
             preemptible_count = preemptible_count,
-            docker = gatk4_docker,
+            #docker = gatk4_docker,
             gatk_path = gatk_path
     }
 
@@ -160,7 +160,7 @@
   			ref_fasta = refFasta,
   			ref_fasta_index = refFastaIndex,
   			preemptible_count = preemptible_count,
-			docker = gatk4_docker,
+			#docker = gatk4_docker,
 			gatk_path = gatk_path
 	}
 
@@ -174,7 +174,7 @@
 			ref_dict = refDict,
 			recalibration_report = BaseRecalibrator.recalibration_report,
 			preemptible_count = preemptible_count,
-			docker = gatk4_docker,
+			#docker = gatk4_docker,
 			gatk_path = gatk_path
 	}
 
@@ -184,7 +184,7 @@
             interval_list = gtfToCallingIntervals.interval_list,
             scatter_count = scatterCount,
             preemptible_count = preemptible_count,
-            docker = gatk4_docker,
+            #docker = gatk4_docker,
             gatk_path = gatk_path
     }
 
@@ -203,7 +203,7 @@
                 dbSNP_vcf_index = dbSnpVcfIndex,
                 stand_call_conf = minConfidenceForVariantCalling,
                 preemptible_count = preemptible_count,
-                docker = gatk4_docker,
+                #docker = gatk4_docker,
                 gatk_path = gatk_path
         }
 
@@ -217,7 +217,7 @@
             input_vcfs_indexes =  HaplotypeCallerOutputVcfIndex,
             output_vcf_name = sampleName + ".g.vcf.gz",
             preemptible_count = preemptible_count,
-            docker = gatk4_docker,
+            #docker = gatk4_docker,
             gatk_path = gatk_path
     }
 	
@@ -230,7 +230,7 @@
 			ref_fasta_index = refFastaIndex,
 			ref_dict = refDict,
 			preemptible_count = preemptible_count,
-			docker = gatk4_docker,
+			#docker = gatk4_docker,
 			gatk_path = gatk_path
 	}
 
