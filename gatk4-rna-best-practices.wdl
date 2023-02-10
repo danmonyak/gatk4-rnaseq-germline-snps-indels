@@ -250,7 +250,7 @@ task gtfToCallingIntervals {
 
     String output_name = basename(gtf, ".gtf") + ".exons.interval_list"
 
-    String docker
+    #String docker
     String gatk_path
     Int preemptible_count
 
@@ -290,7 +290,7 @@ task SamToFastq {
 
     String gatk_path
 
-    String docker
+    #String docker
 	Int preemptible_count
 
 	command <<<
@@ -329,7 +329,7 @@ task StarGenerateReferences {
 	Int disk_size = select_first([100 + add_to_disk, 100])
 	Int? mem_gb
 	Int mem = select_first([100, mem_gb])
-	String docker
+	#String docker
 	Int preemptible_count
 
 	command <<<
@@ -380,7 +380,7 @@ task StarAlign {
 
 	Int? additional_disk
 	Int add_to_disk = select_first([additional_disk, 0])
-	String docker
+	#String docker
 	Int preemptible_count
 
 	command <<<
@@ -429,7 +429,7 @@ task MergeBamAlignment {
 
     String gatk_path
 
-    String docker
+    #String docker
     Int preemptible_count
     #Using default for max_records_in_ram
  
@@ -463,7 +463,7 @@ task MarkDuplicates {
 
   String gatk_path
 
-  String docker
+  #String docker
  	Int preemptible_count
 
  	command <<<
@@ -501,7 +501,7 @@ task SplitNCigarReads {
   File ref_dict
 
 	String gatk_path
-	String docker
+	#String docker
         Int preemptible_count
 
     command <<<
@@ -542,7 +542,7 @@ task BaseRecalibrator {
 
     String gatk_path
 
-    String docker
+    #String docker
     Int preemptible_count
 
     command <<<
@@ -584,7 +584,7 @@ task ApplyBQSR {
 
     String gatk_path
 
-    String docker
+    #String docker
     Int preemptible_count
 
     command <<<
@@ -630,7 +630,7 @@ task HaplotypeCaller {
 	File dbSNP_vcf_index
 
 	String gatk_path
-	String docker
+	#String docker
 	Int preemptible_count
 
 	Int? stand_call_conf
@@ -671,7 +671,7 @@ task VariantFiltration {
  	File ref_fasta_index
 
 	String gatk_path
-	String docker
+	#String docker
  	Int preemptible_count
 
 	command <<<
@@ -710,7 +710,7 @@ task MergeVCFs {
 
     String gatk_path
 
-    String docker
+    #String docker
     Int preemptible_count
 
     # Using MergeVcfs instead of GatherVcfs so we can create indices
@@ -740,7 +740,7 @@ task ScatterIntervalList {
 	File interval_list
 	Int scatter_count
 	String gatk_path
-	String docker
+	#String docker
 	Int preemptible_count
 
     command <<<
@@ -792,7 +792,7 @@ task RevertSam {
 
     String gatk_path
 
-    String docker
+    #String docker
     Int preemptible_count
 
     command <<<
