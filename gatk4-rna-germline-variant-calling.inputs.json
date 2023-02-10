@@ -20,10 +20,10 @@
   ],
   "RNAseq.annotationsGTF": "gs://gatk-test-data/intervals/star.gencode.v19.transcripts.patched_contigs.gtf",
   
-  "##_COMMENT4": "DOCKERS",
-  "#RNAseq.gatk4_docker_override": "String? (optional)",
-  "#RNAseq.star_docker_override": "String? (optional)",
-  "#RNAseq.gitc_docker_override": "String? (optional)",
+  #"##_COMMENT4": "DOCKERS",
+  #"#RNAseq.gatk4_docker_override": "String? (optional)",
+  #"#RNAseq.star_docker_override": "String? (optional)",
+  #"#RNAseq.gitc_docker_override": "String? (optional)",
   
   "##_COMMENT5": "PATHS",
   "#RNAseq.gatk_path_override": "/hpc/group/ryserlab/gatk-4.3.0.0/gatk",
