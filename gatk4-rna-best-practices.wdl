@@ -309,8 +309,8 @@ task SamToFastq {
 
 	runtime {
 		#docker: docker
-		memory: "4 GB"
-		disks: "local-disk " + sub(((size(unmapped_bam,"GB")+1)*5),"\\..*","") + " HDD"
+		#memory: "4 GB"
+		#disks: "local-disk " + sub(((size(unmapped_bam,"GB")+1)*5),"\\..*","") + " HDD"
 		#preemptible: preemptible_count
 	}
 }
@@ -356,9 +356,9 @@ task StarGenerateReferences {
 
 	runtime {
 		#docker: docker
-		disks: "local-disk " + disk_size + " HDD"
-		cpu: threads
-		memory: mem +" GB"
+		#disks: "local-disk " + disk_size + " HDD"
+		#cpu: threads
+		#memory: mem +" GB"
 		#preemptible: preemptible_count
 	}
 }
@@ -411,9 +411,9 @@ task StarAlign {
 
 	runtime {
 		#docker: docker
-		disks: "local-disk " + sub(((size(fastq1,"GB")+size(fastq2,"GB")*10)+30+add_to_disk),"\\..*","") + " HDD"
-		memory: (star_mem+1) + " GB"
-		cpu: threads
+		#disks: "local-disk " + sub(((size(fastq1,"GB")+size(fastq2,"GB")*10)+30+add_to_disk),"\\..*","") + " HDD"
+		#memory: (star_mem+1) + " GB"
+		#cpu: threads
 		#preemptible: preemptible_count
 	}
 }
@@ -450,8 +450,8 @@ task MergeBamAlignment {
 
     runtime {
         #docker: docker
-        disks: "local-disk " + sub(((size(unaligned_bam,"GB")+size(star_bam,"GB")+1)*5),"\\..*","") + " HDD"
-        memory: "4 GB"
+        #disks: "local-disk " + sub(((size(unaligned_bam,"GB")+size(star_bam,"GB")+1)*5),"\\..*","") + " HDD"
+        #memory: "4 GB"
         #preemptible: preemptible_count
     }
 }
@@ -483,9 +483,9 @@ task MarkDuplicates {
  	}
 
 	runtime {
-		disks: "local-disk " + sub(((size(input_bam,"GB")+1)*3),"\\..*","") + " HDD"
+		#disks: "local-disk " + sub(((size(input_bam,"GB")+1)*3),"\\..*","") + " HDD"
 		#docker: docker
-		memory: "4 GB"
+		#memory: "4 GB"
 		#preemptible: preemptible_count
 	}
 }
@@ -518,9 +518,9 @@ task SplitNCigarReads {
         }
 
     runtime {
-        disks: "local-disk " + sub(((size(input_bam,"GB")+1)*5 + size(ref_fasta,"GB")),"\\..*","") + " HDD"
+        #disks: "local-disk " + sub(((size(input_bam,"GB")+1)*5 + size(ref_fasta,"GB")),"\\..*","") + " HDD"
         #docker: docker
-        memory: "4 GB"
+        #memory: "4 GB"
         #preemptible: preemptible_count
     }
 }
@@ -563,8 +563,8 @@ task BaseRecalibrator {
     }
 
     runtime {
-        memory: "6 GB"
-        disks: "local-disk " + sub((size(input_bam,"GB")*3)+30, "\\..*", "") + " HDD"
+        #memory: "6 GB"
+        #disks: "local-disk " + sub((size(input_bam,"GB")*3)+30, "\\..*", "") + " HDD"
         #docker: docker
         #preemptible: preemptible_count
     }
@@ -607,8 +607,8 @@ task ApplyBQSR {
     }
 
     runtime {
-        memory: "3500 MB"
-        disks: "local-disk " + sub((size(input_bam,"GB")*4)+30, "\\..*", "") + " HDD"
+        #memory: "3500 MB"
+        #disks: "local-disk " + sub((size(input_bam,"GB")*4)+30, "\\..*", "") + " HDD"
         #preemptible: preemptible_count
         #docker: docker
     }
@@ -654,8 +654,8 @@ task HaplotypeCaller {
 
 	runtime {
 		#docker: docker
-		memory: "6.5 GB"
-		disks: "local-disk " + sub((size(input_bam,"GB")*2)+30, "\\..*", "") + " HDD"
+		#memory: "6.5 GB"
+		#disks: "local-disk " + sub((size(input_bam,"GB")*2)+30, "\\..*", "") + " HDD"
 		#preemptible: preemptible_count
 	}
 }
@@ -695,8 +695,8 @@ task VariantFiltration {
 
 	runtime {
 		#docker: docker
-		memory: "3 GB"
-		disks: "local-disk " + sub((size(input_vcf,"GB")*2)+30, "\\..*", "") + " HDD"
+		#memory: "3 GB"
+		#disks: "local-disk " + sub((size(input_vcf,"GB")*2)+30, "\\..*", "") + " HDD"
 		#preemptible: preemptible_count
 	}
 }
@@ -728,8 +728,8 @@ task MergeVCFs {
     }
 
     runtime {
-        memory: "3 GB"
-        disks: "local-disk " + disk_size + " HDD"
+        #memory: "3 GB"
+        #disks: "local-disk " + disk_size + " HDD"
         #docker: docker
         #preemptible: preemptible_count
     }
@@ -778,8 +778,8 @@ task ScatterIntervalList {
     }
 
     runtime {
-        disks: "local-disk 1 HDD"
-        memory: "2 GB"
+        #disks: "local-disk 1 HDD"
+        #memory: "2 GB"
         #docker: docker
         #preemptible: preemptible_count
     }
@@ -812,8 +812,8 @@ task RevertSam {
 
     runtime {
         #docker: docker
-        disks: "local-disk " + sub(((size(input_bam,"GB")+1)*5),"\\..*","") + " HDD"
-        memory: "4 GB"
+        #disks: "local-disk " + sub(((size(input_bam,"GB")+1)*5),"\\..*","") + " HDD"
+        #memory: "4 GB"
         #preemptible: preemptible_count
     }
 }
