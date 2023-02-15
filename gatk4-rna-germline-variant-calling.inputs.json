@@ -26,21 +26,21 @@
   "#RNAseq.gitc_docker_override": "String? (optional)",
   
   "##_COMMENT5": "PATHS",
-  "#RNAseq.gatk_path_override": "/hpc/group/ryserlab/gatk-4.3.0.0/gatk",
+  "RNAseq.gatk_path_override": "/hpc/group/ryserlab/gatk-4.3.0.0/gatk",
 
   "##_COMMENT6": "PREEMPTIBLES",
   "##RNAseq.preemptible_tries": "(optional) Int?",
   
   "##_COMMENT7": "Misc",
-  "#RNAseq.StarAlign.num_threads": "(optional) Int?",
+  "RNAseq.StarAlign.num_threads": "8",
   "#RNAseq.StarAlign.star_limitOutSJcollapsed": "(optional) Int?",
   "RNAseq.StarAlign.additional_disk": "50",
-  "#RNAseq.StarAlign.star_mem_max_gb": "(optional) Int?",
+  "RNAseq.StarAlign.star_mem_max_gb": "64",
   "RNAseq.StarGenerateReferences.addtional_disk": 50,
-  "#RNAseq.StarGenerateReferences.num_threads": "(optional) Int?",
-  "#RNAseq.StarGenerateReferences.mem_gb": "(optional) Int?",
+  "RNAseq.StarGenerateReferences.num_threads": "8",
+  "RNAseq.StarGenerateReferences.mem_gb": "64",
   "#RNAseq.haplotypeScatterCount": "(optional) Int?",
-  "#RNAseq.use_gatk4_for_all_tools": "(optional) Boolean",
+  "RNAseq.use_gatk4_for_all_tools": "True",
   "#RNAseq.minConfidenceForVariantCalling": "(optional) Int?",
   "#RNAseq.zippedStarReferences": "(optional) File?",
   "#RNAseq.readLength": "(optional) Int?"
