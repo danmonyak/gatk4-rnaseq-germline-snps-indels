@@ -32,8 +32,11 @@
 
 	#String? gatk4_docker_override
 	#String gatk4_#docker = select_first([gatk4_docker_override, "broadinstitute/gatk:latest"])
+	
 	String? gatk_path_override
-	String gatk_path = select_first([gatk_path_override, "/gatk/gatk"])
+	#String gatk_path = select_first([gatk_path_override, "/gatk/gatk"])
+	String gatk_path = gatk_path_override
+	
 	#String? star_docker_override
 	#String star_docker = select_first([star_docker_override, "quay.io/humancellatlas/secondary-analysis-star:v0.2.2-2.5.3a-40ead6e"])
 
