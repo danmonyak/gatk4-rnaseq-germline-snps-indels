@@ -1,22 +1,22 @@
 {
   "##_COMMENT1": "Input",
-  "RNAseq.inputBam": "gs://gatk-test-data/rna_bam/NA12878_b37/NA12878.unmapped.bam",
+  "RNAseq.inputBam": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/NA12878.unmapped.bam",
   
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.fasta",
-  "RNAseq.refFastaIndex": "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Homo_sapiens_assembly19_1000genomes_decoy.fasta.fai",
-  "RNAseq.refDict": "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Homo_sapiens_assembly19_1000genomes_decoy.dict",
+  "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.fasta.fai",
+  "RNAseq.refDict": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.dict",
 
   "##_COMMENT4": "RESOURCE FILES",
-  "RNAseq.dbSnpVcf": "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Homo_sapiens_assembly19_1000genomes_decoy.dbsnp138.vcf",
-  "RNAseq.dbSnpVcfIndex": "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Homo_sapiens_assembly19_1000genomes_decoy.dbsnp138.vcf.idx",
+  "RNAseq.dbSnpVcf": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.dbsnp138.vcf",
+  "RNAseq.dbSnpVcfIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.dbsnp138.vcf.idx",
   "RNAseq.knownVcfs": [
-    "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Mills_and_1000G_gold_standard.indels.b37.sites.vcf",
-    "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Homo_sapiens_assembly19_1000genomes_decoy.known_indels.vcf"
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Mills_and_1000G_gold_standard.indels.b37.sites.vcf",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.known_indels.vcf"
   ],
   "RNAseq.knownVcfsIndices": [
-    "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Mills_and_1000G_gold_standard.indels.b37.sites.vcf.idx",
-    "gs://gcp-public-data--broad-references/Homo_sapiens_assembly19_1000genomes_decoy/Homo_sapiens_assembly19_1000genomes_decoy.known_indels.vcf.idx"
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Mills_and_1000G_gold_standard.indels.b37.sites.vcf.idx",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.known_indels.vcf.idx"
   ],
   "RNAseq.annotationsGTF": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/star.gencode.v19.transcripts.patched_contigs.gtf",
   
