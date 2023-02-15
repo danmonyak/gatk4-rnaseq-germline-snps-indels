@@ -33,7 +33,7 @@
 	#String? gatk4_docker_override
 	#String gatk4_#docker = select_first([gatk4_docker_override, "broadinstitute/gatk:latest"])
 	
-	#String? gatk_path_override
+	String? gatk_path_override
 	String gatk_path = select_first([gatk_path_override, "/gatk/gatk"])
 	
 	#String? star_docker_override
