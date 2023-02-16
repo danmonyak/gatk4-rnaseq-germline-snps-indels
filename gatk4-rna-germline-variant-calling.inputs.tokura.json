@@ -1,11 +1,11 @@
 {
   "##_COMMENT1": "Input",
-  "RNAseq.inputBam": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/NA12878.unmapped.bam",
+  "RNAseq.inputBam": "/hpc/group/ryserlab/working/NCCBC2_unmapped.bam",
   
   "##_COMMENT2": "REFERENCE FILES",
-  "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.fasta",
-  "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.fasta.fai",
-  "RNAseq.refDict": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.dict",
+  "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna.alt.fa.gz",
+  "#RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly19_1000genomes_decoy.fasta.fai",
+  "RNAseq.refDict": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna.alt.dict",
 
   "##_COMMENT4": "RESOURCE FILES",
   "RNAseq.dbSnpVcf": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/testdata/Homo_sapiens_assembly19_1000genomes_decoy.dbsnp138.vcf",
