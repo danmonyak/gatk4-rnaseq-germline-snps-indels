@@ -4,7 +4,7 @@
   
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna.alt.fa.gz",
-  "#RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly19_1000genomes_decoy.fasta.fai",
+  "#RNAseq.refFastaIndex": "",
   "RNAseq.refDict": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna.alt.dict",
 
   "##_COMMENT4": "RESOURCE FILES",
