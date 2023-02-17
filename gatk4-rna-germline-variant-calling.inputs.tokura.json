@@ -3,7 +3,7 @@
   "RNAseq.inputBam": "/hpc/group/ryserlab/working/NCCBC2_unmapped.bam",
   
   "##_COMMENT2": "REFERENCE FILES",
-  "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna_sm.toplevel.fa.gz",
+  "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna_sm.toplevel.fa",
   "RNAseq.refFastaIndex": "",
   "RNAseq.refDict": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna_sm.toplevel.dict",
 
