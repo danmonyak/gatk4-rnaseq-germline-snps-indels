@@ -27,7 +27,7 @@
 	String sampleName = basename(inputBam,".bam")
 
 	File refFasta
-	File refFastaIndex
+	#File refFastaIndex
 	File refDict
 
 	#String? gatk4_docker_override
@@ -88,7 +88,7 @@
 		call StarGenerateReferences { 
 			input:
 				ref_fasta = refFasta,
-				ref_fasta_index = refFastaIndex,
+				#ref_fasta_index = refFastaIndex,
 				annotations_gtf = annotationsGTF,
 				read_length = readLength,
 				preemptible_count = preemptible_count,
@@ -137,7 +137,7 @@
             input_bam_index = MarkDuplicates.output_bam_index,
             base_name = sampleName + ".split",
             ref_fasta = refFasta,
-            ref_fasta_index = refFastaIndex,
+            #ref_fasta_index = refFastaIndex,
             ref_dict = refDict,
             preemptible_count = preemptible_count,
             #docker = gatk4_docker,
@@ -222,7 +222,7 @@ task SamToFastq {
 
 task StarGenerateReferences {
 	File ref_fasta
-	File ref_fasta_index
+	#File ref_fasta_index
 	File annotations_gtf
 	Int? read_length  ## Should this be an input, or should this always be determined by reading the first line of a fastq input
 
@@ -402,7 +402,7 @@ task SplitNCigarReads {
   String base_name
 
   File ref_fasta
-  File ref_fasta_index
+  #File ref_fasta_index
   File ref_dict
 
 	String gatk_path
@@ -443,7 +443,7 @@ task BaseRecalibrator {
 
     File ref_dict
     File ref_fasta
-    File ref_fasta_index
+    #File ref_fasta_index
 
     String gatk_path
 
@@ -485,7 +485,7 @@ task ApplyBQSR {
 
     File ref_dict
     File ref_fasta
-    File ref_fasta_index
+    #File ref_fasta_index
 
     String gatk_path
 
@@ -529,7 +529,7 @@ task HaplotypeCaller {
 
 	File ref_dict
 	File ref_fasta
-	File ref_fasta_index
+	#File ref_fasta_index
 
 	File dbSNP_vcf
 	File dbSNP_vcf_index
@@ -573,7 +573,7 @@ task VariantFiltration {
 
  	File ref_dict
  	File ref_fasta
- 	File ref_fasta_index
+ 	#File ref_fasta_index
 
 	String gatk_path
 	#String docker
