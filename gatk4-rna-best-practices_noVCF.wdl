@@ -38,13 +38,9 @@
 	
 	#String? star_docker_override
 	#String star_docker = select_first([star_docker_override, "quay.io/humancellatlas/secondary-analysis-star:v0.2.2-2.5.3a-40ead6e"])
-
-	Array[File] knownVcfs
-	Array[File] knownVcfsIndices
-
-	File dbSnpVcf
-	File dbSnpVcfIndex
-
+	
+	
+	
 	Int? minConfidenceForVariantCalling
 
 	## Inputs for STAR
@@ -149,100 +145,7 @@
     }
 
 
-	call BaseRecalibrator {
-		input:
-			input_bam = SplitNCigarReads.output_bam,
-			input_bam_index = SplitNCigarReads.output_bam_index,
-			recal_output_file = sampleName + ".recal_data.csv",
-  			dbSNP_vcf = dbSnpVcf,
-  			dbSNP_vcf_index = dbSnpVcfIndex,
-  			known_indels_sites_VCFs = knownVcfs,
-  			known_indels_sites_indices = knownVcfsIndices,
-  			ref_dict = refDict,
-  			ref_fasta = refFasta,
-  			ref_fasta_index = refFastaIndex,
-  			preemptible_count = preemptible_count,
-			#docker = gatk4_docker,
-			gatk_path = gatk_path
-	}
-
-	call ApplyBQSR {
-		input:
-			input_bam =  SplitNCigarReads.output_bam,
-			input_bam_index = SplitNCigarReads.output_bam_index,
-			base_name = sampleName + ".aligned.duplicates_marked.recalibrated",
-			ref_fasta = refFasta,
-			ref_fasta_index = refFastaIndex,
-			ref_dict = refDict,
-			recalibration_report = BaseRecalibrator.recalibration_report,
-			preemptible_count = preemptible_count,
-			#docker = gatk4_docker,
-			gatk_path = gatk_path
-	}
-
-
-    call ScatterIntervalList {
-        input:
-            interval_list = gtfToCallingIntervals.interval_list,
-            scatter_count = scatterCount,
-            preemptible_count = preemptible_count,
-            #docker = gatk4_docker,
-            gatk_path = gatk_path
-    }
-
-
-	scatter (interval in ScatterIntervalList.out) {
-        call HaplotypeCaller {
-            input:
-                input_bam = ApplyBQSR.output_bam,
-                input_bam_index = ApplyBQSR.output_bam_index,
-                base_name = sampleName + ".hc",
-                interval_list = interval,
-                ref_fasta = refFasta,
-                ref_fasta_index = refFastaIndex,
-                ref_dict = refDict,
-                dbSNP_vcf = dbSnpVcf,
-                dbSNP_vcf_index = dbSnpVcfIndex,
-                stand_call_conf = minConfidenceForVariantCalling,
-                preemptible_count = preemptible_count,
-                #docker = gatk4_docker,
-                gatk_path = gatk_path
-        }
-
-		File HaplotypeCallerOutputVcf = HaplotypeCaller.output_vcf
-		File HaplotypeCallerOutputVcfIndex = HaplotypeCaller.output_vcf_index
-	}
-
-    call MergeVCFs {
-        input:
-            input_vcfs = HaplotypeCallerOutputVcf,
-            input_vcfs_indexes =  HaplotypeCallerOutputVcfIndex,
-            output_vcf_name = sampleName + ".g.vcf.gz",
-            preemptible_count = preemptible_count,
-            #docker = gatk4_docker,
-            gatk_path = gatk_path
-    }
-	
-	call VariantFiltration {
-		input:
-			input_vcf = MergeVCFs.output_vcf,
-			input_vcf_index = MergeVCFs.output_vcf_index,
-			base_name = sampleName + ".variant_filtered.vcf.gz",
-			ref_fasta = refFasta,
-			ref_fasta_index = refFastaIndex,
-			ref_dict = refDict,
-			preemptible_count = preemptible_count,
-			#docker = gatk4_docker,
-			gatk_path = gatk_path
-	}
-
 	output {
-		File recalibrated_bam = ApplyBQSR.output_bam
-		File recalibrated_bam_index = ApplyBQSR.output_bam_index
-		File merged_vcf = MergeVCFs.output_vcf
-		File merged_vcf_index = MergeVCFs.output_vcf_index
-		File variant_filtered_vcf = VariantFiltration.output_vcf
-		File variant_filtered_vcf_index = VariantFiltration.output_vcf_index
 	}
 }
 
