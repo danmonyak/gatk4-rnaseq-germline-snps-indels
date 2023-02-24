@@ -106,17 +106,17 @@
 	#		#docker = star_docker
 	#}
 
-	call MergeBamAlignment {
-		input: 
-			unaligned_bam = RevertSam.output_bam,
-			star_bam = StarAlign.output_bam,
-			base_name = ".merged",
-			ref_fasta = refFasta,
-			ref_dict = refDict,
-			preemptible_count = preemptible_count,
-			#docker = gatk4_docker,
-			gatk_path = gatk_path
-	}
+	#call MergeBamAlignment {
+	#	input: 
+	#		unaligned_bam = RevertSam.output_bam,
+	#		star_bam = StarAlign.output_bam,
+	#		base_name = ".merged",
+	#		ref_fasta = refFasta,
+	#		ref_dict = refDict,
+	#		preemptible_count = preemptible_count,
+	#		#docker = gatk4_docker,
+	#		gatk_path = gatk_path
+	#}
 
 	call MarkDuplicates {
 		input:
