@@ -247,7 +247,7 @@ task StarGenerateReferences {
 		--genomeFastaFiles ${ref_fasta} \
 		--sjdbGTFfile ${annotations_gtf} \
 		${"--sjdbOverhang "+(read_length-1)} \
-		--runThreadN ${threads}
+		--runThreadN ${threads} \
 		--limitGenomeGenerateRAM=60000000000
 
 		ls STAR2_5
