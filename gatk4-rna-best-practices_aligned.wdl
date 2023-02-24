@@ -23,21 +23,18 @@
  
  workflow RNAseq {
 
-	File inputBam
-	String sampleName = basename(inputBam,".bam")
+	#File inputBam
+	#String sampleName = basename(inputBam,".bam")
+
+	File inputAlignedBam
+	String sampleName = basename(inputAlignedBam,".bam")
 
 	File refFasta
 	File refDict
 
-	#String? gatk4_docker_override
-	#String gatk4_#docker = select_first([gatk4_docker_override, "broadinstitute/gatk:latest"])
-	
 	String? gatk_path_override
 	String gatk_path = select_first([gatk_path_override, "/gatk/gatk"])
 	
-	#String? star_docker_override
-	#String star_docker = select_first([star_docker_override, "quay.io/humancellatlas/secondary-analysis-star:v0.2.2-2.5.3a-40ead6e"])
-
 	Array[File] knownVcfs
 	File dbSnpVcf
 
@@ -55,6 +52,7 @@
 	Int? preemptible_tries
 	Int preemptible_count = select_first([preemptible_tries, 3])
 
+	# Doesn't involve BAM
 	call gtfToCallingIntervals {
 	    input:
 	        gtf = annotationsGTF,
@@ -64,49 +62,49 @@
 	        #docker = gatk4_docker
 	}
 
-	call RevertSam {
-		input:
-			input_bam = inputBam,
-			base_name = sampleName + ".reverted",
-			sort_order = "queryname",
-			preemptible_count = preemptible_count,
-			#docker = gatk4_docker,
-			gatk_path = gatk_path
-	}
+	#call RevertSam {
+	#	input:
+	#		input_bam = inputBam,
+	#		base_name = sampleName + ".reverted",
+	#		sort_order = "queryname",
+	#		preemptible_count = preemptible_count,
+	#		#docker = gatk4_docker,
+	#		gatk_path = gatk_path
+	#}
 
-	call SamToFastq {
-		input:
-			unmapped_bam = RevertSam.output_bam,
-			base_name = sampleName,
-			preemptible_count = preemptible_count,
-			#docker = gatk4_docker,
-			gatk_path = gatk_path
-	}
+	#call SamToFastq {
+	#	input:
+	#		unmapped_bam = RevertSam.output_bam,
+	#		base_name = sampleName,
+	#		preemptible_count = preemptible_count,
+	#		#docker = gatk4_docker,
+	#		gatk_path = gatk_path
+	#}
 
-	if (!defined(zippedStarReferences)) {
+	#if (!defined(zippedStarReferences)) {
+	#
+	#	call StarGenerateReferences { 
+	#		input:
+	#			ref_fasta = refFasta,
+	#			annotations_gtf = annotationsGTF,
+	#			read_length = readLength,
+	#			preemptible_count = preemptible_count,
+	#			#docker = star_docker
+	#	}
+	#}
 
-		call StarGenerateReferences { 
-			input:
-				ref_fasta = refFasta,
-				annotations_gtf = annotationsGTF,
-				read_length = readLength,
-				preemptible_count = preemptible_count,
-				#docker = star_docker
-		}
-	}
+	#File starReferences = select_first([zippedStarReferences,StarGenerateReferences.star_genome_refs_zipped,""])
 
-	File starReferences = select_first([zippedStarReferences,StarGenerateReferences.star_genome_refs_zipped,""])
-
-	call StarAlign { 
-		input: 
-			star_genome_refs_zipped = starReferences,
-			fastq1 = SamToFastq.fastq1,
-			fastq2 = SamToFastq.fastq2,
-			base_name = sampleName + ".star",
-			read_length = readLength,
-			preemptible_count = preemptible_count,
-			#docker = star_docker
-	}
+	#call StarAlign { 
+	#	input: 
+	#		star_genome_refs_zipped = starReferences,
+	#		fastq1 = SamToFastq.fastq1,
+	#		fastq2 = SamToFastq.fastq2,
+	#		base_name = sampleName + ".star",
+	#		read_length = readLength,
+	#		preemptible_count = preemptible_count,
+	#		#docker = star_docker
+	#}
 
 	call MergeBamAlignment {
 		input: 
