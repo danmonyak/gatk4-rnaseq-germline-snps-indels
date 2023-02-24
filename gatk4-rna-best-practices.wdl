@@ -27,7 +27,6 @@
 	String sampleName = basename(inputBam,".bam")
 
 	File refFasta
-	File refFastaIndex
 	File refDict
 
 	#String? gatk4_docker_override
@@ -40,10 +39,7 @@
 	#String star_docker = select_first([star_docker_override, "quay.io/humancellatlas/secondary-analysis-star:v0.2.2-2.5.3a-40ead6e"])
 
 	Array[File] knownVcfs
-	Array[File] knownVcfsIndices
-
 	File dbSnpVcf
-	File dbSnpVcfIndex
 
 	Int? minConfidenceForVariantCalling
 
@@ -92,7 +88,6 @@
 		call StarGenerateReferences { 
 			input:
 				ref_fasta = refFasta,
-				ref_fasta_index = refFastaIndex,
 				annotations_gtf = annotationsGTF,
 				read_length = readLength,
 				preemptible_count = preemptible_count,
@@ -141,7 +136,6 @@
             input_bam_index = MarkDuplicates.output_bam_index,
             base_name = sampleName + ".split",
             ref_fasta = refFasta,
-            ref_fasta_index = refFastaIndex,
             ref_dict = refDict,
             preemptible_count = preemptible_count,
             #docker = gatk4_docker,
@@ -155,12 +149,9 @@
 			input_bam_index = SplitNCigarReads.output_bam_index,
 			recal_output_file = sampleName + ".recal_data.csv",
   			dbSNP_vcf = dbSnpVcf,
-  			dbSNP_vcf_index = dbSnpVcfIndex,
   			known_indels_sites_VCFs = knownVcfs,
-  			known_indels_sites_indices = knownVcfsIndices,
   			ref_dict = refDict,
   			ref_fasta = refFasta,
-  			ref_fasta_index = refFastaIndex,
   			preemptible_count = preemptible_count,
 			#docker = gatk4_docker,
 			gatk_path = gatk_path
@@ -172,7 +163,6 @@
 			input_bam_index = SplitNCigarReads.output_bam_index,
 			base_name = sampleName + ".aligned.duplicates_marked.recalibrated",
 			ref_fasta = refFasta,
-			ref_fasta_index = refFastaIndex,
 			ref_dict = refDict,
 			recalibration_report = BaseRecalibrator.recalibration_report,
 			preemptible_count = preemptible_count,
@@ -199,10 +189,8 @@
                 base_name = sampleName + ".hc",
                 interval_list = interval,
                 ref_fasta = refFasta,
-                ref_fasta_index = refFastaIndex,
                 ref_dict = refDict,
                 dbSNP_vcf = dbSnpVcf,
-                dbSNP_vcf_index = dbSnpVcfIndex,
                 stand_call_conf = minConfidenceForVariantCalling,
                 preemptible_count = preemptible_count,
                 #docker = gatk4_docker,
@@ -229,7 +217,6 @@
 			input_vcf_index = MergeVCFs.output_vcf_index,
 			base_name = sampleName + ".variant_filtered.vcf.gz",
 			ref_fasta = refFasta,
-			ref_fasta_index = refFastaIndex,
 			ref_dict = refDict,
 			preemptible_count = preemptible_count,
 			#docker = gatk4_docker,
@@ -534,9 +521,7 @@ task BaseRecalibrator {
     String recal_output_file
 
     File dbSNP_vcf
-    File dbSNP_vcf_index
     Array[File] known_indels_sites_VCFs
-    Array[File] known_indels_sites_indices
 
     File ref_dict
     File ref_fasta
@@ -629,7 +614,6 @@ task HaplotypeCaller {
 	File ref_fasta_index
 
 	File dbSNP_vcf
-	File dbSNP_vcf_index
 
 	String gatk_path
 	#String docker
