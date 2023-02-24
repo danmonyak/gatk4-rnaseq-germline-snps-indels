@@ -1,7 +1,7 @@
 {
   "##_COMMENT1": "Input",
   "#RNAseq.inputBam": "/hpc/group/ryserlab/working/SRR17843648_unmapped.bam",
-  "RNAseq.inputAlignedBam": "/hpc/group/ryserlab/working/NCCBC2/outs/SRR17843648_CR.bam"
+  "RNAseq.inputAlignedBam": "/hpc/group/ryserlab/working/NCCBC2/outs/SRR17843648_CR.bam",
   
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna_sm.toplevel.fa",
