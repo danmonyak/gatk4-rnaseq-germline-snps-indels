@@ -12,14 +12,14 @@
   "RNAseq.dbSnpVcf": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.dbsnp138.vcf",
   "RNAseq.dbSnpVcfIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.dbsnp138.vcf.idx",
   "RNAseq.knownVcfs": [
-    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/1000G_phase1.snps.high_confidence.hg38.vcf",
-    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf",
-    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly19_1000genomes_decoy.known_indels.vcf"
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.known_indels.vcf.gz",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz"
   ],
   "RNAseq.knownVcfsIndices": [
-    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/1000G_phase1.snps.high_confidence.hg38.vcf.idx",
-    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.idx",
-    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly19_1000genomes_decoy.known_indels.vcf.idx"
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi"
   ],
   "RNAseq.annotationsGTF": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.109.gtf",
   
