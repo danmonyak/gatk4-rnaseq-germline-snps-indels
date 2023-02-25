@@ -4,9 +4,9 @@
   "RNAseq.inputAlignedBam": "/hpc/group/ryserlab/working/NCCBC2/outs/SRR17843648_CR.bam",
   
   "##_COMMENT2": "REFERENCE FILES",
-  "RNAseq.refFasta": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna_sm.toplevel.fa",
-  "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna_sm.toplevel.fa.fai",
-  "RNAseq.refDict": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens.GRCh38.dna_sm.toplevel.dict",
+  "RNAseq.refFasta": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa",
+  "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa.fai",
+  "RNAseq.refDict": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa.dict",
 
   "##_COMMENT4": "RESOURCE FILES",
   "RNAseq.dbSnpVcf": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.dbsnp138.vcf",
