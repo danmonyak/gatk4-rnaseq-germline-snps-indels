@@ -30,6 +30,7 @@
 	String sampleName = basename(inputAlignedBam,".bam")
 
 	File refFasta
+	File refFastaIndex
 	File refDict
 
 	String? gatk_path_override
@@ -135,6 +136,7 @@
             input_bam_index = MarkDuplicates.output_bam_index,
             base_name = sampleName + ".split",
             ref_fasta = refFasta,
+            ref_fasta_index = refFastaIndex,
             ref_dict = refDict,
             preemptible_count = preemptible_count,
             #docker = gatk4_docker,
@@ -151,6 +153,7 @@
   			known_indels_sites_VCFs = knownVcfs,
   			ref_dict = refDict,
   			ref_fasta = refFasta,
+  			ref_fasta_index = refFastaIndex,
   			preemptible_count = preemptible_count,
 			#docker = gatk4_docker,
 			gatk_path = gatk_path
@@ -162,6 +165,7 @@
 			input_bam_index = SplitNCigarReads.output_bam_index,
 			base_name = sampleName + ".aligned.duplicates_marked.recalibrated",
 			ref_fasta = refFasta,
+			ref_fasta_index = refFastaIndex,
 			ref_dict = refDict,
 			recalibration_report = BaseRecalibrator.recalibration_report,
 			preemptible_count = preemptible_count,
@@ -188,6 +192,7 @@
                 base_name = sampleName + ".hc",
                 interval_list = interval,
                 ref_fasta = refFasta,
+                ref_fasta_index = refFastaIndex,
                 ref_dict = refDict,
                 dbSNP_vcf = dbSnpVcf,
                 stand_call_conf = minConfidenceForVariantCalling,
@@ -216,6 +221,7 @@
 			input_vcf_index = MergeVCFs.output_vcf_index,
 			base_name = sampleName + ".variant_filtered.vcf.gz",
 			ref_fasta = refFasta,
+			ref_fasta_index = refFastaIndex,
 			ref_dict = refDict,
 			preemptible_count = preemptible_count,
 			#docker = gatk4_docker,
@@ -485,6 +491,7 @@ task SplitNCigarReads {
   String base_name
 
   File ref_fasta
+  File ref_fasta_index
   File ref_dict
 
 	String gatk_path
@@ -523,6 +530,7 @@ task BaseRecalibrator {
 
     File ref_dict
     File ref_fasta
+    File ref_fasta_index
 
     String gatk_path
 
@@ -564,6 +572,7 @@ task ApplyBQSR {
 
     File ref_dict
     File ref_fasta
+    File ref_fasta_index
 
     String gatk_path
 
@@ -607,6 +616,7 @@ task HaplotypeCaller {
 
 	File ref_dict
 	File ref_fasta
+	File ref_fasta_index
 
 	File dbSNP_vcf
 
@@ -649,6 +659,7 @@ task VariantFiltration {
 
  	File ref_dict
  	File ref_fasta
+ 	File ref_fasta_index
 
 	String gatk_path
 	#String docker
