@@ -37,7 +37,10 @@
 	String gatk_path = select_first([gatk_path_override, "/gatk/gatk"])
 	
 	Array[File] knownVcfs
+	Array[File] knownVcfsIndices
+	
 	File dbSnpVcf
+	File dbSnpVcfIndex
 
 	Int? minConfidenceForVariantCalling
 
@@ -150,7 +153,9 @@
 			input_bam_index = SplitNCigarReads.output_bam_index,
 			recal_output_file = sampleName + ".recal_data.csv",
   			dbSNP_vcf = dbSnpVcf,
+  			dbSNP_vcf_index = dbSnpVcfIndex,
   			known_indels_sites_VCFs = knownVcfs,
+  			known_indels_sites_indices = knownVcfsIndices,
   			ref_dict = refDict,
   			ref_fasta = refFasta,
   			ref_fasta_index = refFastaIndex,
@@ -195,6 +200,7 @@
                 ref_fasta_index = refFastaIndex,
                 ref_dict = refDict,
                 dbSNP_vcf = dbSnpVcf,
+                dbSNP_vcf_index = dbSnpVcfIndex,
                 stand_call_conf = minConfidenceForVariantCalling,
                 preemptible_count = preemptible_count,
                 #docker = gatk4_docker,
@@ -526,7 +532,9 @@ task BaseRecalibrator {
     String recal_output_file
 
     File dbSNP_vcf
+    File dbSNP_vcf_index
     Array[File] known_indels_sites_VCFs
+    Array[File] known_indels_sites_indices
 
     File ref_dict
     File ref_fasta
@@ -619,6 +627,7 @@ task HaplotypeCaller {
 	File ref_fasta_index
 
 	File dbSNP_vcf
+	File dbSNP_vcf_index
 
 	String gatk_path
 	#String docker
