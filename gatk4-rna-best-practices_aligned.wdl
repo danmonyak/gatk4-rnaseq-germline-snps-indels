@@ -509,7 +509,8 @@ task SplitNCigarReads {
                 SplitNCigarReads \
                 -R ${ref_fasta} \
                 -I ${input_bam} \
-                -O ${base_name}.bam 
+                -O ${base_name}.bam \
+		--sequence-dictionary=${ref_dict}
     >>>
 
         output {
@@ -555,7 +556,8 @@ task BaseRecalibrator {
             --use-original-qualities \
             -O ${recal_output_file} \
             -known-sites ${dbSNP_vcf} \
-            -known-sites ${sep=" --known-sites " known_indels_sites_VCFs}
+            -known-sites ${sep=" --known-sites " known_indels_sites_VCFs} \
+	    --sequence-dictionary=ref_dict
     >>>
 
     output {
@@ -598,7 +600,8 @@ task ApplyBQSR {
             -I ${input_bam} \
             --use-original-qualities \
             -O ${base_name}.bam \
-            --bqsr-recal-file ${recalibration_report}
+            --bqsr-recal-file ${recalibration_report} \
+	    --sequence-dictionary=ref_dict
     >>>
 
     output {
@@ -644,7 +647,8 @@ task HaplotypeCaller {
 		-O ${base_name}.vcf.gz \
 		-dont-use-soft-clipped-bases \
 		--standard-min-confidence-threshold-for-calling ${default=20 stand_call_conf} \
-		--dbsnp ${dbSNP_vcf}
+		--dbsnp ${dbSNP_vcf} \
+	    	--sequence-dictionary=ref_dict
 	>>>
 
 	output {
@@ -685,7 +689,8 @@ task VariantFiltration {
 			--filter "FS > 30.0" \
 			--filter-name "QD" \
 			--filter "QD < 2.0" \
-			-O ${base_name}
+			-O ${base_name} \
+	    		--sequence-dictionary=ref_dict
 	>>>
 
 	output {
