@@ -6,7 +6,7 @@
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq.refFasta": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa",
   "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa.fai",
-  "RNAseq.refDict": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa.dict",
+  "RNAseq.refDict": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.dict",
 
   "##_COMMENT4": "RESOURCE FILES",
   "RNAseq.dbSnpVcf": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.dbsnp138.vcf",
