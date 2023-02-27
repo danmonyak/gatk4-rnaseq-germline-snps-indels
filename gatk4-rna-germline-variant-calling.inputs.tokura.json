@@ -5,7 +5,7 @@
   
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq.refFasta": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa",
-  "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa.fai",
+  "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fai",
   "RNAseq.refDict": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.dict",
 
   "##_COMMENT4": "RESOURCE FILES",
