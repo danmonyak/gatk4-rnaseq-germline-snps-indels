@@ -10,16 +10,13 @@
 #SBATCH --mail-type=END
 
 sampleName="SRR17843648_unmapped"
+gatk_path="/hpc/group/ryserlab/gatk-4.3.0.0/gatk"
 
-input_vcfs=$HaplotypeCallerOutputVcf
 output_vcf_name=$sampleName".g.vcf.gz"
 
 gatkDir="/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/cromwell-executions/RNAseq/2617d9f2-b516-4dc6-b4e7-990f2ccdc12e/call-HaplotypeCaller"
 manualDir="/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/steps/haplotypeCaller"
-
 vcfFilename="SRR17843648_CR.hc.vcf.gz"
-
-gatk_path="/hpc/group/ryserlab/gatk-4.3.0.0/gatk"
 
 ${gatk_path} --java-options "-Xms2000m"  \
             MergeVcfs \
