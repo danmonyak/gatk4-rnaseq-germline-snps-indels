@@ -1,3 +1,14 @@
+#!/bin/bash
+#SBATCH --job-name=haplotypeCaller
+#SBATCH -o haplotypeCaller.out
+#SBATCH -e haplotypeCaller.err
+#SBATCH -n 1
+#SBATCH -N 1
+#SBATCH -c 8
+#SBATCH --mem=64G
+#SBATCH --mail-user=danmonyak@gmail.com
+#SBATCH --mail-type=END
+
 sampleName="SRR17843648_unmapped"
 #BSQR_base_name = sampleName + ".aligned.duplicates_marked.recalibrated"
 
@@ -20,3 +31,5 @@ ${gatk_path} --java-options "-Xms6000m -XX:GCTimeLimit=50 -XX:GCHeapFreeLimit=10
 		--standard-min-confidence-threshold-for-calling 20 \
 		--dbsnp ${dbSNP_vcf} \
 	    	-sequence-dictionary ${ref_dict}
+
+echo "Done!"
