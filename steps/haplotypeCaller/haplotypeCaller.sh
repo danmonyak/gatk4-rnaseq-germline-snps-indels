@@ -9,9 +9,7 @@
 #SBATCH --mail-user=danmonyak@gmail.com
 #SBATCH --mail-type=END
 
-sampleName="SRR17843648_unmapped"
-#BSQR_base_name = sampleName + ".aligned.duplicates_marked.recalibrated"
-
+sampleName="SRR17843648_CR"
 
 gatk_path="/hpc/group/ryserlab/gatk-4.3.0.0/gatk"
 ref_fasta="/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa"
