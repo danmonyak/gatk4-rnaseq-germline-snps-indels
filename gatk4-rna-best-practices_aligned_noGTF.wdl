@@ -23,9 +23,6 @@
  
  workflow RNAseq {
 
-	#File inputBam
-	#String sampleName = basename(inputBam,".bam")
-
 	File inputAlignedBam
 	String sampleName = basename(inputAlignedBam,".bam")
 
@@ -44,11 +41,10 @@
 
 	Int? minConfidenceForVariantCalling
 
-	## Inputs for STAR
-	Int? readLength
-	File? zippedStarReferences
-	File annotationsGTF
-  
+ 	## Directory of scatter interval list files from previous run
+	String ScatterIntervalListDir
+	Array[File] ScatterIntervalList_manual = glob("$ScatterIntervalListDir/*.interval_list")
+ 
 	## Optional user optimizations
 	Int? haplotypeScatterCount
 	Int scatterCount = select_first([haplotypeScatterCount, 6])
@@ -56,80 +52,13 @@
 	Int? preemptible_tries
 	Int preemptible_count = select_first([preemptible_tries, 3])
 
-	# Doesn't involve BAM
-	call gtfToCallingIntervals {
-	    input:
-	        gtf = annotationsGTF,
-	        ref_dict = refDict,
-	        preemptible_count = preemptible_count,
-	        gatk_path = gatk_path,
-	        #docker = gatk4_docker
-	}
-
-	#call RevertSam {
-	#	input:
-	#		input_bam = inputBam,
-	#		base_name = sampleName + ".reverted",
-	#		sort_order = "queryname",
-	#		preemptible_count = preemptible_count,
-	#		#docker = gatk4_docker,
-	#		gatk_path = gatk_path
-	#}
-
-	#call SamToFastq {
-	#	input:
-	#		unmapped_bam = RevertSam.output_bam,
-	#		base_name = sampleName,
-	#		preemptible_count = preemptible_count,
-	#		#docker = gatk4_docker,
-	#		gatk_path = gatk_path
-	#}
-
-	#if (!defined(zippedStarReferences)) {
-	#
-	#	call StarGenerateReferences { 
-	#		input:
-	#			ref_fasta = refFasta,
-	#			annotations_gtf = annotationsGTF,
-	#			read_length = readLength,
-	#			preemptible_count = preemptible_count,
-	#			#docker = star_docker
-	#	}
-	#}
-
-	#File starReferences = select_first([zippedStarReferences,StarGenerateReferences.star_genome_refs_zipped,""])
-
-	#call StarAlign { 
-	#	input: 
-	#		star_genome_refs_zipped = starReferences,
-	#		fastq1 = SamToFastq.fastq1,
-	#		fastq2 = SamToFastq.fastq2,
-	#		base_name = sampleName + ".star",
-	#		read_length = readLength,
-	#		preemptible_count = preemptible_count,
-	#		#docker = star_docker
-	#}
-
-	#call MergeBamAlignment {
-	#	input: 
-	#		unaligned_bam = RevertSam.output_bam,
-	#		star_bam = StarAlign.output_bam,
-	#		base_name = ".merged",
-	#		ref_fasta = refFasta,
-	#		ref_dict = refDict,
-	#		preemptible_count = preemptible_count,
-	#		#docker = gatk4_docker,
-	#		gatk_path = gatk_path
-	#}
-
 	call MarkDuplicates {
-		input:
-			#input_bam = MergeBamAlignment.output_bam,
-			input_bam = inputAlignedBam,
-			base_name = sampleName + ".dedupped",
-			preemptible_count = preemptible_count,
-			#docker = gatk4_docker,
-			gatk_path = gatk_path
+	    input:
+	        input_bam = inputAlignedBam,
+	        base_name = sampleName + ".dedupped",
+	        preemptible_count = preemptible_count,
+	        #docker = gatk4_docker,
+	        gatk_path = gatk_path
 	}
 
 
@@ -178,18 +107,8 @@
 			gatk_path = gatk_path
 	}
 
-
-    call ScatterIntervalList {
-        input:
-            interval_list = gtfToCallingIntervals.interval_list,
-            scatter_count = scatterCount,
-            preemptible_count = preemptible_count,
-            #docker = gatk4_docker,
-            gatk_path = gatk_path
-    }
-
-
-	scatter (interval in ScatterIntervalList.out) {
+	
+	scatter (interval in ScatterIntervalList_manual) {
         call HaplotypeCaller {
             input:
                 input_bam = ApplyBQSR.output_bam,
