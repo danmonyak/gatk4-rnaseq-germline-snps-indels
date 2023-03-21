@@ -43,8 +43,9 @@
 
  	## Directory of scatter interval list files from previous run
 	String ScatterIntervalListDir
-	Array[File] ScatterIntervalList_manual = glob("$ScatterIntervalListDir/*.interval_list")
- 
+	#Array[File] ScatterIntervalList_manual = glob(ScatterIntervalListDir + "/*.interval_list")
+	call glob_task{input: silDir=ScatterIntervalListDir}
+
 	## Optional user optimizations
 	Int? haplotypeScatterCount
 	Int scatterCount = select_first([haplotypeScatterCount, 6])
@@ -108,7 +109,7 @@
 	}
 
 	
-	scatter (interval in ScatterIntervalList_manual) {
+	scatter (interval in glob_task.out) {
         call HaplotypeCaller {
             input:
                 input_bam = ApplyBQSR.output_bam,
@@ -742,3 +743,8 @@ task RevertSam {
     }
 }
 
+task glob_task {
+    String silDir
+    command {}
+    output { Array[File] out = glob(silDir + "/*.interval_list") }
+}
