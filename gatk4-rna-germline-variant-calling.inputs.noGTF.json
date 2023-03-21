@@ -1,0 +1,50 @@
+{
+  "##_COMMENT1": "Input",
+  "#RNAseq.inputBam": "/hpc/group/ryserlab/working/SRR17843648_unmapped.bam",
+  "RNAseq.inputAlignedBam": "/hpc/group/ryserlab/working/NCCBC2/outs/SRR17843648_CR.bam",
+  
+  "##_COMMENT2": "REFERENCE FILES",
+  "RNAseq.refFasta": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa",
+  "RNAseq.refFastaIndex": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa.fai",
+  "RNAseq.refDict": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.dict",
+
+  "##_COMMENT4": "RESOURCE FILES",
+  "RNAseq.dbSnpVcf": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.dbsnp138.vcf",
+  "RNAseq.dbSnpVcfIndex": "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.dbsnp138.vcf.idx",
+  "RNAseq.knownVcfs": [
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/1000G_phase1.snps.high_confidence.hg38.vcf.gz",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.known_indels.vcf.gz",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz"
+  ],
+  "RNAseq.knownVcfsIndices": [
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi",
+    "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi"
+  ],
+  "RNAseq.annotationsGTF": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/genes/genes.gtf",
+  
+  "##_COMMENT4": "DOCKERS",
+  "#RNAseq.gatk4_docker_override": "String? (optional)",
+  "#RNAseq.star_docker_override": "String? (optional)",
+  "#RNAseq.gitc_docker_override": "String? (optional)",
+  
+  "##_COMMENT5": "PATHS",
+  "RNAseq.gatk_path_override": "/hpc/group/ryserlab/gatk-4.3.0.0/gatk",
+
+  "##_COMMENT6": "PREEMPTIBLES",
+  "##RNAseq.preemptible_tries": "(optional) Int?",
+  
+  "##_COMMENT7": "Misc",
+  "RNAseq.StarAlign.num_threads": "8",
+  "#RNAseq.StarAlign.star_limitOutSJcollapsed": "(optional) Int?",
+  "RNAseq.StarAlign.additional_disk": "50",
+  "RNAseq.StarAlign.star_mem_max_gb": "64",
+  "RNAseq.StarGenerateReferences.addtional_disk": 50,
+  "RNAseq.StarGenerateReferences.num_threads": "8",
+  "RNAseq.StarGenerateReferences.mem_gb": "64",
+  "#RNAseq.haplotypeScatterCount": "(optional) Int?",
+  "RNAseq.use_gatk4_for_all_tools": "True",
+  "#RNAseq.minConfidenceForVariantCalling": "(optional) Int?",
+  "#RNAseq.zippedStarReferences": "(optional) File?",
+  "#RNAseq.readLength": "(optional) Int?"
+}
