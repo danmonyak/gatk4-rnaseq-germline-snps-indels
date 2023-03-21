@@ -1,7 +1,6 @@
 {
   "##_COMMENT1": "Input",
-  "#RNAseq.inputBam": "/hpc/group/ryserlab/working/SRR17843648_unmapped.bam",
-  "RNAseq.inputAlignedBam": "/hpc/group/ryserlab/working/NCCBC2/outs/SRR17843648_CR.bam",
+  "RNAseq.inputAlignedBam": "/hpc/group/ryserlab/working/splitBAM/makeSAM/sample/BC919.bam",
   
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq.refFasta": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa",
@@ -21,8 +20,9 @@
     "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi",
     "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi"
   ],
-  "RNAseq.annotationsGTF": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/genes/genes.gtf",
-  
+
+  "RNAseq.ScatterIntervalListDir":"/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/cromwell-executions/RNAseq/2617d9f2-b516-4dc6-b4e7-990f2ccdc12e/call-ScatterIntervalList/execution/glob-cb4648beeaff920acb03de7603c06f98",
+
   "##_COMMENT4": "DOCKERS",
   "#RNAseq.gatk4_docker_override": "String? (optional)",
   "#RNAseq.star_docker_override": "String? (optional)",
