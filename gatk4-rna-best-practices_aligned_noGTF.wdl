@@ -746,5 +746,5 @@ task RevertSam {
 task glob_task {
     String silDir
     command {}
-    output { Array[File] out = glob(silDir + "/*.interval_list") }
+    output { Array[File] out = glob(silDir + "/out/*/*.interval_list") }
 }

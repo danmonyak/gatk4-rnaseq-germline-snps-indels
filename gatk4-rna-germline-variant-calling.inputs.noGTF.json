@@ -21,7 +21,7 @@
     "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi"
   ],
 
-  "RNAseq.ScatterIntervalListDir":"/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/cromwell-executions/RNAseq/2617d9f2-b516-4dc6-b4e7-990f2ccdc12e/call-ScatterIntervalList/execution/glob-cb4648beeaff920acb03de7603c06f98",
+  "RNAseq.ScatterIntervalListDir":"/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/cromwell-executions/RNAseq/2617d9f2-b516-4dc6-b4e7-990f2ccdc12e/call-ScatterIntervalList/execution",
 
   "##_COMMENT4": "DOCKERS",
   "#RNAseq.gatk4_docker_override": "String? (optional)",
