@@ -21,7 +21,7 @@
 ## page at https://hub.docker.com/r/broadinstitute/genomes-in-the-cloud/ for detailed
 ## licensing information pertaining to the included programs. 
  
- workflow RNAseq {
+ workflow RNAseq_array {
 
 	File inputAlignedBam
 	String sampleName = basename(inputAlignedBam,".bam")
