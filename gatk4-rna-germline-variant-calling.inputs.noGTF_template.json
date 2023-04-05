@@ -1,6 +1,6 @@
 {
   "##_COMMENT1": "Input",
-  "RNAseq_array.inputAlignedBam": "/hpc/group/ryserlab/working/splitBAM/makeSAM/sample/bc_BAMs/",
+  "RNAseq_array.inputAlignedBam": "/hpc/group/ryserlab/working/splitBAM/makeSAM/sample/bc_BAMs/NCCBC2/",
   
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq_array.refFasta": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa",
@@ -21,7 +21,7 @@
     "/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/realdata/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi"
   ],
 
-  "RNAseq_array.ScatterIntervalListDir":"/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/cromwell-executions/RNAseq_array/2617d9f2-b516-4dc6-b4e7-990f2ccdc12e/call-ScatterIntervalList/execution",
+  "RNAseq_array.ScatterIntervalListDir":"/hpc/group/ryserlab/working/gatk4/gatk4-rnaseq-germline-snps-indels/cromwell-executions/RNAseq/2617d9f2-b516-4dc6-b4e7-990f2ccdc12e/call-ScatterIntervalList/execution",
 
   "##_COMMENT4": "DOCKERS",
   "#RNAseq_array.gatk4_docker_override": "String? (optional)",

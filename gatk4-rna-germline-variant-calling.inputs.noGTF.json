@@ -1,6 +1,6 @@
 {
   "##_COMMENT1": "Input",
-  "RNAseq_array.inputAlignedBam": "/hpc/group/ryserlab/working/splitBAM/makeSAM/sample/BC919.bam",
+  "RNAseq_array.inputAlignedBam": "/hpc/group/ryserlab/working/splitBAM/makeSAM/sample/bc_BAMs/BC2.bam",
   
   "##_COMMENT2": "REFERENCE FILES",
   "RNAseq_array.refFasta": "/hpc/group/ryserlab/working/refdata-gex-GRCh38-2020-A/fasta/genome.fa",
